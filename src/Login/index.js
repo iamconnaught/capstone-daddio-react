@@ -30,7 +30,7 @@ class Login extends Component {
 			console.log('parsedResponse');
 			console.log(parsedResponse);
 			if (parsedResponse.status === 200) {
-				//this.props.history.push('/user');//url not set up yet
+				this.props.history.push('/user');
 			}	console.log('status:', parsedResponse.status);
 			
 		} catch (err){

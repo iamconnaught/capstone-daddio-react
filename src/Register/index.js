@@ -18,7 +18,7 @@ class Register extends Component {
 		try {
 			const registerResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/auth/register', {
 		      method: 'POST',
-		      credentials: 'include',  // on every request we have to send the cookie
+		      credentials: 'include', 
 		      body: JSON.stringify(this.state),
 		      headers:{
 		        'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ class Register extends Component {
 
         	const parsedResponse = await registerResponse.json();
         	if(parsedResponse.status === 200){
-	    		//this.props.history.push('../user');//url not set up yet
+	    		this.props.history.push('../user');
 	    		console.log('Status: ', parsedResponse.status);
 	    	}
 	    }   
