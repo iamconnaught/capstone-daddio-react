@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link }from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
 	constructor(){
@@ -42,7 +42,8 @@ class Register extends Component {
 				<form onSubmit={this.handleSubmit}>
 					<input type="text" name="username" placeholder="username" onChange={this.handleChange}/>
 					<input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
-					<button type="submit">Register</button>
+					<button type="submit">Register</button><br/>
+					<span>Already have an account? <Link to='/auth/login'>Login Here</Link></span>
 				</form>
 			</div>
 			)
