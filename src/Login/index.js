@@ -9,7 +9,34 @@ class Login extends Component {
 			password: ''
 		}
 	}
-	
+	handleChange = (e) => {
+		this.setState({[e.target.name]: e.target.value});
+	}
+	handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const loginResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/auth/login', {
+				method: 'Post',
+				credentials: 'include',
+				body: JSON.stringify(this.state),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log('logged in as ', this.state.username);
+			console.log('loginResponse');
+			console.log(loginResponse);
+			const parsedResponse = await loginResponse.json();
+			console.log('parsedResponse');
+			console.log(parsedResponse);
+			if (parsedResponse.status === 200) {
+				//this.props.history.push('/user');//url not set up yet
+			}	console.log('status:', parsedResponse.status);
+			
+		} catch (err){
+			console.log(err);
+		}
+	}
 	render(){
 		return(
 			<div>
