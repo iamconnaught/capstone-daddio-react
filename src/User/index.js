@@ -10,6 +10,7 @@ class User extends Component {
 		return(
 			<div>
 				<h1>User Profile</h1>
+				<Link to='/baby/new'>Add a Baby</Link>
 				<RandomName />
 				<Countdown timeTilDate="06 10 2019" timeFormat="MM DD YYYY"/>
 				<Baby />

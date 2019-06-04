@@ -5,7 +5,8 @@ import Login from './Login';
 import Register from './Register';
 import Home from './Home';
 import User from './User';
-import RandomName from './RandomName';
+import CreateBaby from './CreateBaby';
+import EditBaby from './EditBaby';
 
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
         <Route exact path="/auth/login" component={ Login } />
         <Route exact path="/auth/register" component={ Register }/>
         <Route exact path="/user" component={ User }/>
-        <Route exact path="/name/random" component={ RandomName }/>
+        <Route exact path="/baby/new" component={ CreateBaby }/>
+        <Route exact path="/baby/edit" component={ EditBaby }/>
       </Switch>
     </main>
   );

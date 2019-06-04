@@ -17,7 +17,7 @@ class Countdown extends Component {
 			const then = moment(timeTilDate, timeFormat);
 			const now = moment();
 			const countdown = moment(then - now);
-			const days = countdown.format('D');
+			const days = countdown.format('DDD');
 			const hours = countdown.format('HH');
 			const minutes = countdown.format('mm');
 			const seconds = countdown.format('ss');
@@ -33,7 +33,7 @@ class Countdown extends Component {
 	render() {
 		const { days, hours, minutes, seconds } = this.state;
 
-        const daysRadius = mapNumber(days, 30, 0, 0, 360);
+        const daysRadius = mapNumber(days, 280, 0, 0, 360);
         const hoursRadius = mapNumber(hours, 24, 0, 0, 360);
         const minutesRadius = mapNumber(minutes, 60, 0, 0, 360);
         const secondsRadius = mapNumber(seconds, 60, 0, 0, 360);
