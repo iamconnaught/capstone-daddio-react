@@ -14,11 +14,11 @@ class RandomName extends Component {
 		})
 	} 
 	componentDidMount(){
-		console.log("componentDidMount");
+		// console.log("componentDidMount");
 		this.getRandomName();
 	}
 	getRandomName = async () => {
-		console.log("getRandomName hit");
+		// console.log("getRandomName hit");
 		try {
 			const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/name/random`)
 			const names = await response.json()

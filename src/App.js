@@ -5,7 +5,7 @@ import Login from './Login';
 import Register from './Register';
 import Home from './Home';
 import User from './User';
-import RandomName from './RandomName'
+import RandomName from './RandomName';
 
 
 function App() {
