@@ -27,7 +27,7 @@ class CreateBaby extends Component {
 			})
 			const parsedResponse = await babyResponse.json();
         	if(parsedResponse.status === 200){
-	    		this.props.history.push('../user');
+	    		this.props.history.push('/user');
 	    	}
 		} catch (err){
 			console.error(err)

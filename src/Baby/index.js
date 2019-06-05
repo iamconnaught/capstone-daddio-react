@@ -61,6 +61,14 @@ class Baby extends Component {
 	// 	}
 
 	// }
+	editBaby(e){
+		 // <Link to="/baby/edit"  babyId={e.currentTarget.parentNode.dataset.babyId}>Edit</Link>
+
+	}
+	handleChange = (e) => {
+		this.setState({[e.target.name]: e.target.value});
+
+	}
 	render(){
 		console.log(this.state.list);
 		const babyList = this.state.list.map((baby) => {
@@ -69,7 +77,7 @@ class Baby extends Component {
 					<span>{baby.name}</span><br/>
 					<span>{baby.dateOfBirth}</span><br/>
 					<button onClick={this.deleteBaby}>Delete</button>
-					<Link to="/baby/edit" name={baby.name} gender={baby.gender} dateOfBirth={baby.dateOfBirth}>Edit</Link>
+					<button onClick={this.editBaby}>Edit</button>
 					<Countdown timeTilDate={baby.dateOfBirth} timeFormat="YYYY-MM-DD"/>
 
 				</li>

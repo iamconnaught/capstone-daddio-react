@@ -7,6 +7,7 @@ import Home from './Home';
 import User from './User';
 import CreateBaby from './CreateBaby';
 import EditBaby from './EditBaby';
+import CreatePost from './CreatePost';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/user" component={ User }/>
         <Route exact path="/baby/new" component={ CreateBaby }/>
         <Route exact path="/baby/edit" component={ EditBaby }/>
+        <Route exact path="/post/new" component={ CreatePost }/>
       </Switch>
     </main>
   );

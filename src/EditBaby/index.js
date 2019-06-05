@@ -18,6 +18,19 @@ class EditBaby extends Component {
 		console.log('this.props');
 		console.log(this.props);
 	}
+	getFormData = async () => {
+		try {
+			const getBaby = await fetch(`${process.env.REACT_APP_BACKEND_URL}/baby/${this.props.babyId}`, {
+				method: 'GET',
+				credentials: "include"
+			})
+			const fetchedData = await getBaby.json();
+			console.log('fetchedData');
+			console.log(fetchedData);
+		} catch (err){
+			console.error(err)
+		}
+	}
 	render(){
 		return(
 			<div>
@@ -29,7 +42,7 @@ class EditBaby extends Component {
 						<option value="Boy">Boy</option>
 						<option value="Girl">Girl</option>
 					</select>
-					<button type="submit"> Add Baby </button>
+					<button type="submit"> Edit Baby </button>
 				</form>
 			</div>
 
