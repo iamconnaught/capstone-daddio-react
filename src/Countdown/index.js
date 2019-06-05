@@ -44,7 +44,6 @@ class Countdown extends Component {
 
 		return(
 			<div>
-				<h1>Countdown</h1>
 				<div className="countdown-wrapper">
 					{days && (
 						<div className="countdown-item">

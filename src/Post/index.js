@@ -27,6 +27,7 @@ class Post extends Component {
 				method: 'DELETE',
 				credentials: 'include'
 			})
+			console.log(deletedPost);
 			this.componentDidMount();
 		} catch (err){
 			console.error(err)
@@ -43,16 +44,21 @@ class Post extends Component {
 				)
 			})
 			return(
-				<li data-post-id={post._id} key={post._id}>
-					<span>{post.title}</span><br/>
-					<span>{post.body}</span><br/>
-					<ul>{keywords}</ul>
-					<button onClick={this.deletePost}>Delete</button>
-				</li>
+				<div>
+					<li data-post-id={post._id} key={post._id}>
+						<span>{post.title}</span><br/>
+						<span>{post.body}</span><br/>
+						<ul>{keywords}</ul>
+						<button onClick={this.deletePost}>Delete</button>
+					</li>
+				</div>
 			)
 		});
 		return(
-			<ul>{postList}</ul>
+			<div>
+				<h1>Blog</h1>
+				<ul>{postList}</ul>
+			</div>	
 		)
 	}
 }

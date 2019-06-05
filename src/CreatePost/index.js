@@ -16,13 +16,13 @@ class CreatePost extends Component {
 	handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const postResponse = await fetch(`${process.env.REACT_APP_BACKGROUND_URL}/post/new`, {
+			const postResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/post/new`, {
 				method: 'POST',
 		      	credentials: 'include', 
 		      	body: JSON.stringify(this.state),
 		      	headers:{
 		        	'Content-Type': 'application/json'
-		    		}
+		    	}
 			})
 			console.log('postResponse');
 			console.log(postResponse);

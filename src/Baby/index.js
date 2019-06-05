@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import Countdown from '../Countdown';
 import { Link } from 'react-router-dom';
+import EditBaby from '../EditBaby';
 
 class Baby extends Component {
 	constructor(){
 		super();
 		this.state = {
 			list: [],
-			babyId: null
+			idOfBabyBeingEdited: null
 		}
 	}
 	async componentDidMount(){
+		this.getBabyList();
+	}
+	getBabyList = async () => {
 		const data = await fetch(`${process.env.REACT_APP_BACKEND_URL}/baby`, {
 			method: 'GET',
 			credentials: 'include',
@@ -40,9 +44,23 @@ class Baby extends Component {
 			console.error(err)
 		}
 	}
-	// editBaby = async (e) => {
-	// 	e.preventDefault();
-	// 	console.log(e.currentTarget.parentNode.dataset);
+	closeEdit = () => {
+
+		this.getBabyList();
+
+		this.setState({
+			idOfBabyBeingEdited: null
+		})
+	}
+	editBaby = async (e) => {
+		console.log(e.currentTarget.parentNode.dataset);
+		const id = e.currentTarget.parentNode.dataset.babyId
+		console.log(id);
+		
+		this.setState({
+			idOfBabyBeingEdited: id
+		})
+		
 	// 	try {
 	// 		const updatedBaby = await fetch(process.env.REACT_APP_BACKEND_URL + '/baby/' + e.currentTarget.parentNode.dataset.babyId, {
 	// 			method: "PUT",
@@ -60,26 +78,28 @@ class Baby extends Component {
 	// 		console.error(err)
 	// 	}
 
-	// }
-	editBaby(e){
-		 // <Link to="/baby/edit"  babyId={e.currentTarget.parentNode.dataset.babyId}>Edit</Link>
-
 	}
+	// editBaby(e){
+	// 	 // <Link to="/baby/edit"  babyId={e.currentTarget.parentNode.dataset.babyId}>Edit</Link>
+
+	// }
 	handleChange = (e) => {
 		this.setState({[e.target.name]: e.target.value});
 
 	}
 	render(){
-		console.log(this.state.list);
-		const babyList = this.state.list.map((baby) => {
+		console.log(this.state);
+
+
+		// console.log(this.state.list);
+		const babyList = this.state.list.map((baby, i) => {
 			return(
 				<li data-baby-id={baby._id} key={baby._id}>
-					<span>{baby.name}</span><br/>
-					<span>{baby.dateOfBirth}</span><br/>
+					<h1>Countdown to {baby.name}</h1>
+					{this.state.idOfBabyBeingEdited !== null ? <EditBaby idOfBabyBeingEdited={this.state.idOfBabyBeingEdited} closeEdit={this.closeEdit}/> : null}
+					<Countdown timeTilDate={baby.dateOfBirth} timeFormat="YYYY-MM-DD"/>
 					<button onClick={this.deleteBaby}>Delete</button>
 					<button onClick={this.editBaby}>Edit</button>
-					<Countdown timeTilDate={baby.dateOfBirth} timeFormat="YYYY-MM-DD"/>
-
 				</li>
 			)
 		})

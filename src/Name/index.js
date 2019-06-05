@@ -28,7 +28,10 @@ class Name extends Component {
 				)
 		})
 		return(
-			<ul> {nameList} </ul>
+			<div>
+				<h1>Names to Consider</h1>
+				<ul> {nameList} </ul>
+			</div>
 			)
 	}
 
