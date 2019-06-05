@@ -47,7 +47,7 @@ class Post extends Component {
 				<div>
 					<li data-post-id={post._id} key={post._id}>
 						<span>{post.title}</span><br/>
-						<span>{post.body}</span><br/>
+						<span>{post.text}</span><br/>
 						<ul>{keywords}</ul>
 						<button onClick={this.deletePost}>Delete</button>
 					</li>
