@@ -18,10 +18,24 @@ class Task extends Component {
 			list: fetchedData
 		})
 	}
+	deleteTask = async (e) => {
+		e.preventDefault();
+		try {
+			console.log('delete this id');
+			console.log(e.currentTarget.parentNode.dataset);
+			const deletedTask = await fetch(`${process.env.REACT_APP_BACKEND_URL}/task/${e.currentTarget.parentNode.dataset.taskId}`, {
+				method: "DELETE",
+				credentials: 'include'
+			})
+			this.componentDidMount()
+		} catch (err){
+			console.error(err);
+		}
+	}
 	render(){
 		const taskList = this.state.list.map((task) => {
 				return(
-					<li data-post-id={task._id} key={task._id}>
+					<li data-task-id={task._id} key={task._id}>
 						<span>{task.title}</span><br/>
 						<span>{task.details}</span><br/>
 						<button onClick={this.deleteTask}>Delete</button>
