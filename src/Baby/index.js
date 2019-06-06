@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Countdown from '../Countdown';
-import { Link } from 'react-router-dom';
 import EditBaby from '../EditBaby';
 
 class Baby extends Component {
