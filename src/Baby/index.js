@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Countdown from '../Countdown';
 import EditBaby from '../EditBaby';
+import ShowBaby from '../ShowBaby';
 
 class Baby extends Component {
 	constructor(){
 		super();
 		this.state = {
 			list: [],
-			idOfBabyBeingEdited: null
+			idOfBabyBeingEdited: null,
+			idOfBabyBeingShown: null
 		}
 	}
 	async componentDidMount(){
@@ -18,8 +20,8 @@ class Baby extends Component {
 			method: 'GET',
 			credentials: 'include',
 		});
-		console.log('data');
-		console.log(data);
+		// console.log('data');
+		// console.log(data);
 		const fetchedData = await data.json();
 		console.log(fetchedData);
 		// console.log('fetchedData.name');
@@ -30,18 +32,28 @@ class Baby extends Component {
 	}
 	deleteBaby = async (e) => {
 		e.preventDefault();
-		console.log(e.currentTarget.parentNode.dataset);
+		// console.log(e.currentTarget.parentNode.dataset);
 		try {
-			const deletedBaby = await fetch(process.env.REACT_APP_BACKEND_URL + '/baby/' + e.currentTarget.parentNode.dataset.babyId, {
+			await fetch(process.env.REACT_APP_BACKEND_URL + '/baby/' + e.currentTarget.parentNode.dataset.babyId, {
 				method: "DELETE",
 				credentials: 'include'
 			})
-			console.log('deletedBaby');
-			console.log(deletedBaby);
+			// console.log('deletedBaby');
+			// console.log(deletedBaby);
 			this.componentDidMount()		
 		} catch (err){
 			console.error(err)
 		}
+	}
+	showBaby = (e) => {
+		console.log('e.currentTarget');
+		console.log(e.currentTarget);
+		const id = e.currentTarget.parentNode.dataset.babyId
+		console.log('id');
+		console.log(id);
+		this.setState({
+			idOfBabyBeingShown: id
+		})
 	}
 	closeEdit = () => {
 
@@ -52,37 +64,16 @@ class Baby extends Component {
 		})
 	}
 	editBaby = async (e) => {
-		console.log(e.currentTarget.parentNode.dataset);
+		// console.log(e.currentTarget.parentNode.dataset);
 		const id = e.currentTarget.parentNode.dataset.babyId
-		console.log(id);
+		// console.log(id);
 		
 		this.setState({
 			idOfBabyBeingEdited: id
 		})
-		
-	// 	try {
-	// 		const updatedBaby = await fetch(process.env.REACT_APP_BACKEND_URL + '/baby/' + e.currentTarget.parentNode.dataset.babyId, {
-	// 			method: "PUT",
-	// 			credentials: 'include',
-	// 			body: JSON.stringify(this.state),
-	// 			headers:{
-	// 	        'Content-Type': 'application/json'
-	// 	    		}
-	// 		})
-	// 		const parsedResponse = await updatedBaby.json();
-	// 		if(parsedResponse.status === 200){
-	//     		this.props.history.push('../user/profile');
-	//     	}
-	// 	} catch (err){
-	// 		console.error(err)
-	// 	}
-
 	}
-	// editBaby(e){
-	// 	 // <Link to="/baby/edit"  babyId={e.currentTarget.parentNode.dataset.babyId}>Edit</Link>
-
-	// }
 	render(){
+		console.log('this.state in baby render');
 		console.log(this.state);
 
 
@@ -91,6 +82,7 @@ class Baby extends Component {
 			return(
 				<li data-baby-id={baby._id} key={baby._id}>
 					<h1>Countdown to {baby.name}</h1>
+					<button onClick={this.showBaby}>Show {baby.name} details </button>
 					{this.state.idOfBabyBeingEdited !== null ? <EditBaby idOfBabyBeingEdited={this.state.idOfBabyBeingEdited} closeEdit={this.closeEdit}/> : null}
 					<Countdown timeTilDate={baby.dateOfBirth} timeFormat="YYYY-MM-DD"/>
 					<button onClick={this.deleteBaby}>Delete</button>
@@ -100,7 +92,9 @@ class Baby extends Component {
 		})
 		return(
 			<div>
-				<ul>{babyList}</ul>
+				
+			{this.state.idOfBabyBeingShown === null ? <ul>{babyList}</ul> : null}
+			{this.state.idOfBabyBeingShown !== null ? <ShowBaby idOfBabyBeingShown={this.state.idOfBabyBeingShown} /> : null}
 			</div>
 
 			)

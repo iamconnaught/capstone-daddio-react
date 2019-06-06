@@ -23,7 +23,7 @@ class EditPost extends Component {
 			console.log("Post Id")
 			console.log(this.props.idOfPostBeingEdited);
 
-			const updatedPost = await fetch(process.env.REACT_APP_BACKEND_URL + '/post/' + this.props.idOfPostBeingEdited, {
+			await fetch(process.env.REACT_APP_BACKEND_URL + '/post/' + this.props.idOfPostBeingEdited, {
 				method: "PUT",
 				credentials: 'include',
 				body: JSON.stringify(this.state),
@@ -33,7 +33,7 @@ class EditPost extends Component {
 			})
 			// console.log('updatedBaby');
 			// console.log(updatedBaby);
-			const parsedResponse = await updatedPost.json();
+			// const parsedResponse = await updatedPost.json();
 			// if(parsedResponse.status === 200){
 	  //   		this.props.history.push('../user/profile');
 	  //   	}

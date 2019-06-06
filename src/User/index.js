@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link }from 'react-router-dom';
 import RandomName from '../RandomName';
 import Baby from '../Baby';
 import Name from '../Name';

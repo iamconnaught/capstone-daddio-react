@@ -45,6 +45,20 @@ class ShowTask extends Component {
 			idOfTaskBeingEdited: null
 		})
 	}
+	deleteTask = async (e) => {
+		e.preventDefault();
+		try {
+			// console.log('delete this id');
+			// console.log(e.currentTarget.parentNode.dataset);
+			await fetch(`${process.env.REACT_APP_BACKEND_URL}/task/${this.props.idOfTaskBeingShown}`, {
+				method: "DELETE",
+				credentials: 'include'
+			})
+			this.componentDidMount()
+		} catch (err){
+			console.error(err);
+		}
+	}
 	toggleComplete = async () => {
 		const completedTask = await fetch(process.env.REACT_APP_BACKEND_URL + '/task/' + this.props.idOfTaskBeingShown, {
 				method: "PUT",

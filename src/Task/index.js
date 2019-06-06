@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import EditTask from '../EditTask';
 import ShowTask from '../ShowTask';
 
 class Task extends Component {
@@ -23,20 +22,20 @@ class Task extends Component {
 			list: fetchedData
 		})
 	}
-	deleteTask = async (e) => {
-		e.preventDefault();
-		try {
-			// console.log('delete this id');
-			// console.log(e.currentTarget.parentNode.dataset);
-			const deletedTask = await fetch(`${process.env.REACT_APP_BACKEND_URL}/task/${e.currentTarget.parentNode.dataset.taskId}`, {
-				method: "DELETE",
-				credentials: 'include'
-			})
-			this.componentDidMount()
-		} catch (err){
-			console.error(err);
-		}
-	}
+	// deleteTask = async (e) => {
+	// 	e.preventDefault();
+	// 	try {
+	// 		// console.log('delete this id');
+	// 		// console.log(e.currentTarget.parentNode.dataset);
+	// 		const deletedTask = await fetch(`${process.env.REACT_APP_BACKEND_URL}/task/${e.currentTarget.parentNode.dataset.taskId}`, {
+	// 			method: "DELETE",
+	// 			credentials: 'include'
+	// 		})
+	// 		this.componentDidMount()
+	// 	} catch (err){
+	// 		console.error(err);
+	// 	}
+	// }
 	showTask = (e) => {
 		// console.log(e.currentTarget.parentNode.dataset);
 		const id = e.currentTarget.parentNode.dataset.taskId

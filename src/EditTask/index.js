@@ -22,7 +22,7 @@ class EditTask extends Component {
 			console.log("Task Id")
 			console.log(this.props.idOfTaskBeingEdited);
 
-			const updatedTask = await fetch(process.env.REACT_APP_BACKEND_URL + '/task/' + this.props.idOfTaskBeingEdited, {
+			await fetch(process.env.REACT_APP_BACKEND_URL + '/task/' + this.props.idOfTaskBeingEdited, {
 				method: "PUT",
 				credentials: 'include',
 				body: JSON.stringify(this.state),
@@ -32,7 +32,8 @@ class EditTask extends Component {
 			})
 			// console.log('updatedBaby');
 			// console.log(updatedBaby);
-			const parsedResponse = await updatedTask.json();
+			// const parsedResponse = await updatedTask.json();
+			// console.log(parsedResponse);
 			// if(parsedResponse.status === 200){
 	  //   		this.props.history.push('../user/profile');
 	  //   	}
