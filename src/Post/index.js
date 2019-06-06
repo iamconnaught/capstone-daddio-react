@@ -46,6 +46,7 @@ class Post extends Component {
 	editPost = async (e) => {
 		console.log(e.currentTarget.parentNode.dataset);
 		const id = e.currentTarget.parentNode.dataset.postId
+		console.log("id");
 		console.log(id);
 		this.setState({
 			idOfPostBeingEdited: id
