@@ -8,7 +8,7 @@ class Baby extends Component {
 		super();
 		this.state = {
 			list: [],
-			idOfBabyBeingEdited: null,
+			// idOfBabyBeingEdited: null,
 			idOfBabyBeingShown: null
 		}
 	}
@@ -30,21 +30,21 @@ class Baby extends Component {
 			list: fetchedData
 		});
 	}
-	deleteBaby = async (e) => {
-		e.preventDefault();
-		// console.log(e.currentTarget.parentNode.dataset);
-		try {
-			await fetch(process.env.REACT_APP_BACKEND_URL + '/baby/' + e.currentTarget.parentNode.dataset.babyId, {
-				method: "DELETE",
-				credentials: 'include'
-			})
-			// console.log('deletedBaby');
-			// console.log(deletedBaby);
-			this.componentDidMount()		
-		} catch (err){
-			console.error(err)
-		}
-	}
+	// deleteBaby = async (e) => {
+	// 	e.preventDefault();
+	// 	// console.log(e.currentTarget.parentNode.dataset);
+	// 	try {
+	// 		await fetch(process.env.REACT_APP_BACKEND_URL + '/baby/' + e.currentTarget.parentNode.dataset.babyId, {
+	// 			method: "DELETE",
+	// 			credentials: 'include'
+	// 		})
+	// 		// console.log('deletedBaby');
+	// 		// console.log(deletedBaby);
+	// 		this.componentDidMount()		
+	// 	} catch (err){
+	// 		console.error(err)
+	// 	}
+	// }
 	showBaby = (e) => {
 		console.log('e.currentTarget');
 		console.log(e.currentTarget);
@@ -55,23 +55,23 @@ class Baby extends Component {
 			idOfBabyBeingShown: id
 		})
 	}
-	closeEdit = () => {
+	// closeEdit = () => {
 
-		this.getBabyList();
+	// 	this.getBabyList();
 
-		this.setState({
-			idOfBabyBeingEdited: null
-		})
-	}
-	editBaby = async (e) => {
-		// console.log(e.currentTarget.parentNode.dataset);
-		const id = e.currentTarget.parentNode.dataset.babyId
-		// console.log(id);
+	// 	this.setState({
+	// 		idOfBabyBeingEdited: null
+	// 	})
+	// }
+	// editBaby = async (e) => {
+	// 	// console.log(e.currentTarget.parentNode.dataset);
+	// 	const id = e.currentTarget.parentNode.dataset.babyId
+	// 	// console.log(id);
 		
-		this.setState({
-			idOfBabyBeingEdited: id
-		})
-	}
+	// 	this.setState({
+	// 		idOfBabyBeingEdited: id
+	// 	})
+	// }
 	render(){
 		console.log('this.state in baby render');
 		console.log(this.state);
@@ -83,10 +83,7 @@ class Baby extends Component {
 				<li data-baby-id={baby._id} key={baby._id}>
 					<h1>Countdown to {baby.name}</h1>
 					<button onClick={this.showBaby}>Show {baby.name} details </button>
-					{this.state.idOfBabyBeingEdited !== null ? <EditBaby idOfBabyBeingEdited={this.state.idOfBabyBeingEdited} closeEdit={this.closeEdit}/> : null}
 					<Countdown timeTilDate={baby.dateOfBirth} timeFormat="YYYY-MM-DD"/>
-					<button onClick={this.deleteBaby}>Delete</button>
-					<button onClick={this.editBaby}>Edit</button>
 				</li>
 			)
 		})

@@ -24,11 +24,13 @@ class ShowBaby extends Component {
 		console.log('fetchedData');
 		console.log(fetchedData);
 		const d = new Date(fetchedData.dateOfBirth);
-		const readableDate = d.toLocaleDateString('en-US', {
-			    month: 'long'}) + ' ' 
-				+ d.toLocaleDateString('en-US', {
-				day: '2-digit'}) + ', ' 
-				+ d.toLocaleDateString('en-US', {
+		const readableDate = d.toLocaleDateString('en-UK', {
+			    month: 'long'
+			}) + ' ' 
+				+ d.toLocaleDateString('en-UK', {
+				day: '2-digit'
+			}) + ', ' 
+				+ d.toLocaleDateString('en-UK', {
 				year: 'numeric'
 			})
 		this.setState({
@@ -56,6 +58,7 @@ class ShowBaby extends Component {
 	render(){
 		return(
 			<div>
+				<h1>{this.state.name}</h1>
 				<p>Gender: {this.state.gender}</p>
 				<p>Due Date: {this.state.dateOfBirth}</p>
 				{this.state.idOfBabyBeingEdited !== null ? <EditBaby idOfBabyBeingEdited={this.state.idOfBabyBeingEdited} closeEdit={this.closeEdit}/> : null}

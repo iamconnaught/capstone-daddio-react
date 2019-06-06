@@ -5,17 +5,21 @@ class EditBaby extends Component {
 		super(props);
 		this.state = {
 			name: '',
-			gender: "Unknown",
+			gender: '',
 			dateOfBirth: '1999-09-09'
 		}
 	}
 	componentDidMount(){
 		this.getFormData();
 	}
-	handleChange = (e) => {
-		console.log("here is e.target.value in handle change");
+	handleDateChange = (e) => {
 		console.log(e.target.value);
-		this.setState({[e.target.name]: new Date(e.target.value)});
+		this.setState({
+			dateOfBirth: e.target.value
+		});
+	}
+	handleChange = (e) => {
+		this.setState({[e.target.name]: e.target.value});
 	}
 	handleSubmit = async (e) => {
 		console.log(e.target.value);
@@ -24,6 +28,10 @@ class EditBaby extends Component {
 
 			console.log("Baby ID")
 			console.log(this.props.idOfBabyBeingEdited);
+
+			console.log("here is the data we are using to update");
+			console.log(this.state);
+
 
 			await fetch(process.env.REACT_APP_BACKEND_URL + '/baby/' + this.props.idOfBabyBeingEdited, {
 				method: "PUT",
@@ -63,7 +71,6 @@ class EditBaby extends Component {
 
 				month: '2-digit'
 			}) + '-' + d.toLocaleDateString('en-US', {
-
 				day: '2-digit'
 			})
 
@@ -102,9 +109,9 @@ class EditBaby extends Component {
 						type="date" 
 						name="date" 
 						value={this.state.dateOfBirth} 
-						onChange={this.handleChange}
+						onChange={this.handleDateChange}
 					/>
-					<select>
+					<select name="gender" onChange={this.handleChange} >
 						<option value="Unknown">Unknown</option>
 						<option value="Boy">Boy</option>
 						<option value="Girl">Girl</option>
