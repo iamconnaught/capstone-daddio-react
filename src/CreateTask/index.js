@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../Header';
 
 class CreateTask extends Component {
 	constructor(){
@@ -34,6 +35,7 @@ class CreateTask extends Component {
 	render(){
 		return(
 			<div>
+				<Header />
 				<form onSubmit={this.handleSubmit}>
 					<input type="text" name="title" placeholder="Title" onChange={this.handleChange}/>
 					<input type="text" name="details" placeholder="Details" onChange={this.handleChange}/>

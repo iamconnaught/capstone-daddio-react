@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../Header';
 
 class CreateBaby extends Component {
 	constructor(){
@@ -36,6 +37,7 @@ class CreateBaby extends Component {
 	render(){
 		return(
 			<div>
+				<Header />
 				<form onSubmit={this.handleSubmit}>
 					<input type="text" name="name" placeholder="name" onChange={this.handleChange}/>
 					<input type="date" name="date" placeholder="YYYY-MM-DD" onChange={this.handleChange}/>

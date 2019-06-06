@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class EditBaby extends Component {
+class EditPost extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			name: '',
-			gender: "Unknown",
-			dateOfBirth: null
+			title: '',
+			text: '',
+			keywords: []
 		}
 	}
 	componentDidMount(){
@@ -20,10 +20,10 @@ class EditBaby extends Component {
 		e.preventDefault();
 		try {
 
-			console.log("Baby ID")
-			console.log(this.props.idOfBabyBeingEdited);
+			console.log("Post Id")
+			console.log(this.props.idOfPostBeingEdited);
 
-			const updatedBaby = await fetch(process.env.REACT_APP_BACKEND_URL + '/baby/' + this.props.idOfBabyBeingEdited, {
+			const updatedPost = await fetch(process.env.REACT_APP_BACKEND_URL + '/post/' + this.props.idOfPostBeingEdited, {
 				method: "PUT",
 				credentials: 'include',
 				body: JSON.stringify(this.state),
@@ -33,7 +33,7 @@ class EditBaby extends Component {
 			})
 			// console.log('updatedBaby');
 			// console.log(updatedBaby);
-			const parsedResponse = await updatedBaby.json();
+			const parsedResponse = await updatedPost.json();
 			// if(parsedResponse.status === 200){
 	  //   		this.props.history.push('../user/profile');
 	  //   	}
@@ -46,17 +46,17 @@ class EditBaby extends Component {
 	}
 	getFormData = async () => {
 		try {
-			const getBaby = await fetch(`${process.env.REACT_APP_BACKEND_URL}/baby/${this.props.idOfBabyBeingEdited}`, {
+			const getPost = await fetch(`${process.env.REACT_APP_BACKEND_URL}/post/${this.props.idOfPostBeingEdited}`, {
 				method: 'GET',
 				credentials: "include"
 			})
-			const fetchedData = await getBaby.json();
+			const fetchedData = await getPost.json();
 			console.log('fetchedData');
 			console.log(fetchedData);
 			this.setState({
-				name: fetchedData.name,
-				gender: fetchedData.gender,
-				dateOfBirth: fetchedData.dateOfBirth
+				title: fetchedData.title,
+				text: fetchedData.text,
+				keywords: fetchedData.keywords
 			})
 		} catch (err){
 			console.error(err)
@@ -64,37 +64,34 @@ class EditBaby extends Component {
 	}
 	render(){
 		
-		console.log("here is state for edit baby:");
+		console.log("here is state for edit post:");
 		console.log(this.state)
 
 		return(
 
 
 			<div>
-				<h1>EDIT BABY</h1>
+				<h1>EDIT Post</h1>
 				<form onSubmit={this.handleSubmit}>
 					<input 
 						type="text" 
-						name="name" 
-						value={this.state.name} 
+						name="title" 
+						value={this.state.title} 
 						onChange={this.handleChange}
 					/>
-					<div>
-						<p>Current Date of Birth: </p>
-						<p>{this.state.dateOfBirth ? this.state.dateOfBirth.toLocaleString() : null}</p>
-					</div>
+					<textarea 
+						type="text" 
+						name="text" 
+						value={this.state.text} 
+						onChange={this.handleChange}
+					/>
 					<input 
-						type="date" 
-						name="date" 
-						value={this.state.dateOfBirth} 
+						type="text" 
+						name="keywords" 
+						value={this.state.keywords} 
 						onChange={this.handleChange}
 					/>
-					<select>
-						<option value="Unknown">Unknown</option>
-						<option value="Boy">Boy</option>
-						<option value="Girl">Girl</option>
-					</select>
-					<button type="submit"> Update Baby </button>
+					<button type="submit"> Update Post </button>
 				</form>
 			</div>
 
@@ -103,4 +100,4 @@ class EditBaby extends Component {
 
 }
 
-export default EditBaby;
+export default EditPost;

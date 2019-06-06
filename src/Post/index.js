@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import EditPost from '../EditPost';
 
 class Post extends Component {
 	constructor(){
 		super();
 		this.state ={
 			list: [],
-			postId: null
+			idOfPostBeingEdited: null
 		}
 	}
 	async componentDidMount(){
+		this.getPostList();
+	}
+	getPostList = async () => {
 		const data = await fetch(`${process.env.REACT_APP_BACKEND_URL}/post`, {
 			method: 'GET',
 			credentials: 'include'
@@ -33,6 +37,20 @@ class Post extends Component {
 			console.error(err)
 		}
 	}
+	closeEdit = () => {
+		this.getPostList();
+		this.setState({
+			idOfPostBeingEdited: null
+		})
+	}
+	editPost = async (e) => {
+		console.log(e.currentTarget.parentNode.dataset);
+		const id = e.currentTarget.parentNode.dataset.postId
+		console.log(id);
+		this.setState({
+			idOfPostBeingEdited: id
+		})
+	}
 
 	render(){
 		const postList = this.state.list.map((post) => {
@@ -48,8 +66,10 @@ class Post extends Component {
 					<li data-post-id={post._id} key={post._id}>
 						<span>{post.title}</span><br/>
 						<span>{post.text}</span><br/>
+						{this.state.idOfPostBeingEdited !== null ? <EditPost idOfPostBeingEdited={this.state.idOfPostBeingEdited} closeEdit={this.closeEdit}/> : null}
 						<ul>{keywords}</ul>
 						<button onClick={this.deletePost}>Delete</button>
+						<button onClick={this.editPost}>Edit</button>
 					</li>
 				</div>
 			)

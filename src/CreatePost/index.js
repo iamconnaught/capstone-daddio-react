@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../Header';
 
 class CreatePost extends Component {
 	constructor(){
@@ -39,9 +40,10 @@ class CreatePost extends Component {
 	render(){
 		return(
 			<div>
+				<Header />
 				<form onSubmit={this.handleSubmit}>
 					<input type="text" name="title" placeholder="Title" onChange={this.handleChange}/>
-					<input type="text" name="text" placeholder="text" onChange={this.handleChange}/>
+					<textarea type="text" name="text" placeholder="Text" onChange={this.handleChange}/>
 					<input type="text" name="keywords" placeholder="Keywords" onChange={this.handleChange}/>
 					<button type="submit">Add Post</button>
 				</form>

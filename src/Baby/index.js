@@ -83,10 +83,6 @@ class Baby extends Component {
 	// 	 // <Link to="/baby/edit"  babyId={e.currentTarget.parentNode.dataset.babyId}>Edit</Link>
 
 	// }
-	handleChange = (e) => {
-		this.setState({[e.target.name]: e.target.value});
-
-	}
 	render(){
 		console.log(this.state);
 
