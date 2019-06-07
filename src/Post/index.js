@@ -63,7 +63,7 @@ class Post extends Component {
 	render(){
 		const postList = this.state.list.map((post) => {
 			return(
-				<div>
+				<div className="blog">
 					<li data-post-id={post._id} key={post._id}>
 						<span>{post.title}</span><br/>
 						
@@ -74,7 +74,7 @@ class Post extends Component {
 		});
 		return(
 			<div>
-				<h1>Blog</h1>
+				<h2 className="blog">Blog</h2>
 				{this.state.idOfPostBeingShown === null ? <ul>{postList}</ul> : null }
 				{this.state.idOfPostBeingShown !== null ? <ShowPost idOfPostBeingShown={this.state.idOfPostBeingShown} /> : null}
 			</div>	

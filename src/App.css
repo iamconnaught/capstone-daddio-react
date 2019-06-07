@@ -1,26 +1,11 @@
 .App {
   text-align: center;
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
+li {
+   list-style: none;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -46,6 +31,7 @@ h1 {
     letter-spacing: 2px;
     text-align: center;
     text-transform: uppercase;
+    color: #4B484A;
 }
 
 .countdown-wrapper {
@@ -56,7 +42,7 @@ h1 {
 }
 
 .countdown-item {
-    color: #111;
+    color: #4B484A;
     font-size: 40px;
     display: flex;
     align-items: center;
@@ -71,7 +57,7 @@ h1 {
 }
 
 .countdown-item span {
-    color: #333;
+    color: #4B484A;
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
@@ -83,4 +69,82 @@ h1 {
     left: 0;
     width: 100px;
     height: 100px;
+
 }
+
+svg {
+  stroke: #4B484A;
+}
+
+
+header {
+  background-color: #B2A38D;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+
+.headerLink  {
+  display: flex;
+  margin: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+
+header a {
+  color: #4B484A;
+  text-decoration: none;
+}
+
+header a:hover {
+  color: #EAEAEA;
+}
+
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+ }
+
+.buttonContainer button {
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background: #B2A38D;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 150px;
+ }
+
+.randomName, .name, .blog, .todo, .baby{
+  color: #4B484A;
+  margin-bottom: 50px
+}
+
+.randomName button, .name button, .blog button, .todo button, .baby button{
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background:#B2A38D;
+  font-size: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 80px;
+ }
+
+
+
+
+
+
+
+
+
+

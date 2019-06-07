@@ -47,7 +47,7 @@ class Countdown extends Component {
 				<div className="countdown-wrapper">
 					{days && (
 						<div className="countdown-item">
-							<SVGCircle radius={daysRadius} />
+							<SVGCircle  radius={daysRadius} />
 							{days}
 							<span>days</span>
 						</div>

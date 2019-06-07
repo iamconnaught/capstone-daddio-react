@@ -59,8 +59,8 @@ class Task extends Component {
 				)
 			});
 			return(
-				<div>
-					<h1>To-Do List</h1>
+				<div className="todo">
+					<h2>To-Do List</h2>
 					{this.state.idOfTaskBeingShown === null ? <ul>{taskList}</ul> : null}
 					{this.state.idOfTaskBeingShown !== null ? <ShowTask idOfTaskBeingShown={this.state.idOfTaskBeingShown}/> : null}
 				</div>	

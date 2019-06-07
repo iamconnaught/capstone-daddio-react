@@ -5,12 +5,12 @@ import { Link }from 'react-router-dom';
 class Header extends Component {
 	render(){
 		return(
-			<div>
-				<Link to='/baby/new'>Add a Baby</Link>
-				<Link to='/post/new'>Add a Post</Link>
-				<Link to='/task/new'>Add a Task</Link>
-				<Link to='/user'>Profile</Link>
-			</div>
+			<header>
+				<Link className='headerLink' to='/user'>Profile</Link>
+				<Link className='headerLink' to='/baby/new'>Add Baby</Link>
+				<Link className='headerLink' to='/post/new'>Add Post</Link>
+				<Link className='headerLink' to='/task/new'>Add Task</Link>
+			</header>
 		)
 	}
 }

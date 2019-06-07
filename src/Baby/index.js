@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Countdown from '../Countdown';
-import EditBaby from '../EditBaby';
+// import EditBaby from '../EditBaby';
 import ShowBaby from '../ShowBaby';
 
 class Baby extends Component {
@@ -55,14 +55,21 @@ class Baby extends Component {
 			idOfBabyBeingShown: id
 		})
 	}
-	// closeEdit = () => {
+	hideBaby = () => {
+		console.log('hideBaby');
+		this.getBabyList();
+		this.setState({
+			idOfBabyBeingShown: null
+		})
+	}
+	closeEdit = () => {
 
-	// 	this.getBabyList();
+		this.getBabyList();
 
-	// 	this.setState({
-	// 		idOfBabyBeingEdited: null
-	// 	})
-	// }
+		this.setState({
+			idOfBabyBeingEdited: null
+		})
+	}
 	// editBaby = async (e) => {
 	// 	// console.log(e.currentTarget.parentNode.dataset);
 	// 	const id = e.currentTarget.parentNode.dataset.babyId
@@ -82,16 +89,17 @@ class Baby extends Component {
 			return(
 				<li data-baby-id={baby._id} key={baby._id}>
 					<h1>Countdown to {baby.name}</h1>
-					<button onClick={this.showBaby}>Show {baby.name} details </button>
+					<button onClick={this.showBaby} >Show {baby.name} details </button>
 					<Countdown timeTilDate={baby.dateOfBirth} timeFormat="YYYY-MM-DD"/>
 				</li>
 			)
 		})
 		return(
-			<div>
+			<div className="baby">
 				
 			{this.state.idOfBabyBeingShown === null ? <ul>{babyList}</ul> : null}
-			{this.state.idOfBabyBeingShown !== null ? <ShowBaby idOfBabyBeingShown={this.state.idOfBabyBeingShown} /> : null}
+			{this.state.idOfBabyBeingShown !== null ? <ShowBaby idOfBabyBeingShown={this.state.idOfBabyBeingShown} hideBaby={this.hideBaby} /> : null}
+
 			</div>
 
 			)

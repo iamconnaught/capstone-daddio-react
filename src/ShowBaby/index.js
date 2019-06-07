@@ -64,6 +64,7 @@ class ShowBaby extends Component {
 				{this.state.idOfBabyBeingEdited !== null ? <EditBaby idOfBabyBeingEdited={this.state.idOfBabyBeingEdited} closeEdit={this.closeEdit}/> : null}
 				<button onClick={this.deleteBaby}>Delete</button>
 				<button onClick={this.editBaby}>Edit</button>
+				<button onClick={this.props.hideBaby}>Back</button>
 			</div>
 		)
 	}

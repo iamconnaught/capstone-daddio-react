@@ -18,7 +18,7 @@ class RandomName extends Component {
 		this.getRandomName();
 	}
 	getRandomName = async () => {
-		// console.log("getRandomName hit");
+		console.log("getRandomName hit");
 		try {
 			const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/name/random`)
 			const names = await response.json()
@@ -68,8 +68,8 @@ class RandomName extends Component {
 			})
 		}
 		return(
-			<div>
-			<span><strong>Name Suggestions</strong></span>
+			<div className="randomName">
+			<h2>Name Suggestions</h2>
 				<ul>
 					{nameList}
 				</ul>

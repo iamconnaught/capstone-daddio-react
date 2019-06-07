@@ -44,11 +44,12 @@ class User extends Component {
 		return(
 			<div>
 				<Header />
-				<h1>User Profile</h1>
 				<Baby />
-				<button onClick={this.showPost}>Blog</button>
-				<button onClick={this.showTask}>Task</button>
-				<button onClick={this.showNames}>Names</button>
+				<div className="buttonContainer">
+					<button onClick={this.showPost}>Blog</button>
+					<button onClick={this.showTask}>To-Do List</button>
+					<button onClick={this.showNames}>Names</button>
+				</div>
 				{this.state.displayPost ? <Post /> : null}
 				{this.state.displayTask ? <Task /> : null}
 				{this.state.displayNames ? <RandomName /> : null}

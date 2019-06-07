@@ -70,7 +70,7 @@ class ShowPost extends Component {
 				)
 			})
 		return(
-			<div>
+			<div className="blog">
 				<p>{this.state.text}</p>
 				<ul>{keywords}</ul>
 				{this.state.idOfPostBeingEdited !== null ? <EditPost idOfPostBeingEdited={this.state.idOfPostBeingEdited} closeEdit={this.closeEdit}/> : null}
