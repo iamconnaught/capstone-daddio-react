@@ -54,10 +54,11 @@ class ShowTask extends Component {
 				method: "DELETE",
 				credentials: 'include'
 			})
-			this.componentDidMount()
+			this.props.getTaskList()
 		} catch (err){
 			console.error(err);
 		}
+
 	}
 	toggleComplete = async () => {
 		const completedTask = await fetch(process.env.REACT_APP_BACKEND_URL + '/task/' + this.props.idOfTaskBeingShown, {
@@ -78,7 +79,8 @@ class ShowTask extends Component {
 	}
 	render(){
 		return(
-			<div>
+			<div className="todo">
+				<h3>{this.state.title}</h3>
 				<p>{this.state.details}</p>
 				{this.state.idOfTaskBeingEdited !== null ? <EditTask idOfTaskBeingEdited={this.state.idOfTaskBeingEdited} closeEdit={this.closeEdit}/> : null}
 				{this.state.isCompleted === true ? <span>You did it!</span> : null}

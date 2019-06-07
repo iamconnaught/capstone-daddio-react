@@ -55,6 +55,18 @@ class ShowBaby extends Component {
 			idOfBabyBeingEdited: this.props.idOfBabyBeingShown
 		})
 	}
+	deleteBaby = async (e) => {
+		e.preventDefault();
+		try {
+			await fetch(`${process.env.REACT_APP_BACKEND_URL}/baby/${this.props.idOfBabyBeingShown}`, {
+				method: "DELETE",
+				credentials: 'include'
+			})
+			this.props.getBabyList()
+		} catch (err){
+			console.error(err);
+		}
+	}
 	render(){
 		return(
 			<div>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 
 class RandomName extends Component {
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state = {
 			results: null
 		}
@@ -51,6 +51,7 @@ class RandomName extends Component {
 			const parsedResponse = await addedName.json();
 			console.log('parsedResponse');
 			console.log(parsedResponse);
+			this.props.getNameList()
 		} catch (err){
 			console.log(err);
 		}

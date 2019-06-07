@@ -78,7 +78,7 @@ svg {
 
 
 header {
-  background-color: #B2A38D;
+  background-color: #2A5586;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -98,7 +98,7 @@ header {
 
 
 header a {
-  color: #4B484A;
+  color: #FFFFFF;
   text-decoration: none;
 }
 
@@ -116,23 +116,34 @@ header a:hover {
   color: white;
   border-radius: 4px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  background: #B2A38D;
+  background: #2A5586;
   font-size: 20px;
   margin-left: 10px;
   margin-right: 10px;
   width: 150px;
  }
 
-.randomName, .name, .blog, .todo, .baby{
-  color: #4B484A;
-  margin-bottom: 50px
-}
-
-.randomName button, .name button, .blog button, .todo button, .baby button{
+.baby button {
   color: white;
   border-radius: 4px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  background:#B2A38D;
+  background: #2A5586;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 150px;
+}
+
+.randomName, .name, .blog, .todo, .baby{
+  color: #4B484A;
+  margin-bottom: 50px;
+}
+
+.randomName button, .name button, .blog button, .todo button{
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background:#2A5586;
   font-size: 10px;
   margin-left: 10px;
   margin-right: 10px;

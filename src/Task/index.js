@@ -10,15 +10,16 @@ class Task extends Component {
 		}
 	}
 	async componentDidMount(){
-		this.getPostList();
+		this.getTaskList();
 	}
-	getPostList = async () => {
+	getTaskList = async () => {
 		const data = await fetch(`${process.env.REACT_APP_BACKEND_URL}/task`, {
 			method: 'GET',
 			credentials: 'include'
 		});
 		const fetchedData = await data.json();
 		this.setState({
+			idOfTaskBeingShown: null,
 			list: fetchedData
 		})
 	}
@@ -62,7 +63,7 @@ class Task extends Component {
 				<div className="todo">
 					<h2>To-Do List</h2>
 					{this.state.idOfTaskBeingShown === null ? <ul>{taskList}</ul> : null}
-					{this.state.idOfTaskBeingShown !== null ? <ShowTask idOfTaskBeingShown={this.state.idOfTaskBeingShown}/> : null}
+					{this.state.idOfTaskBeingShown !== null ? <ShowTask idOfTaskBeingShown={this.state.idOfTaskBeingShown} getTaskList={this.getTaskList}/> : null}
 				</div>	
 			)
 	}

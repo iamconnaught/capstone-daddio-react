@@ -27,6 +27,7 @@ class Baby extends Component {
 		// console.log('fetchedData.name');
 		// console.log(fetchedData.name);
 		this.setState({
+			idOfBabyBeingShown: null,
 			list: fetchedData
 		});
 	}
@@ -79,6 +80,7 @@ class Baby extends Component {
 	// 		idOfBabyBeingEdited: id
 	// 	})
 	// }
+	
 	render(){
 		console.log('this.state in baby render');
 		console.log(this.state);
@@ -98,7 +100,7 @@ class Baby extends Component {
 			<div className="baby">
 				
 			{this.state.idOfBabyBeingShown === null ? <ul>{babyList}</ul> : null}
-			{this.state.idOfBabyBeingShown !== null ? <ShowBaby idOfBabyBeingShown={this.state.idOfBabyBeingShown} hideBaby={this.hideBaby} /> : null}
+			{this.state.idOfBabyBeingShown !== null ? <ShowBaby idOfBabyBeingShown={this.state.idOfBabyBeingShown} hideBaby={this.hideBaby} getBabyList={this.getBabyList}/> : null}
 
 			</div>
 

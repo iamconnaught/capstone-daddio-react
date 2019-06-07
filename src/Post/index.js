@@ -20,6 +20,7 @@ class Post extends Component {
 		});
 		const fetchedData = await data.json();
 		this.setState({
+			idOfPostBeingShown: null,
 			list: fetchedData
 		})
 	}
@@ -76,7 +77,7 @@ class Post extends Component {
 			<div>
 				<h2 className="blog">Blog</h2>
 				{this.state.idOfPostBeingShown === null ? <ul>{postList}</ul> : null }
-				{this.state.idOfPostBeingShown !== null ? <ShowPost idOfPostBeingShown={this.state.idOfPostBeingShown} /> : null}
+				{this.state.idOfPostBeingShown !== null ? <ShowPost idOfPostBeingShown={this.state.idOfPostBeingShown} getPostList={this.getPostList}/> : null}
 			</div>	
 		)
 	}

@@ -54,7 +54,7 @@ class ShowPost extends Component {
 				method: "DELETE",
 				credentials: 'include'
 			})
-			this.componentDidMount()
+			this.props.getPostList()
 		} catch (err){
 			console.error(err);
 		}
@@ -62,20 +62,14 @@ class ShowPost extends Component {
 	render(){
 		console.log('this.state.text in showpost render');
 		console.log(this.state.text);
-		const keywords = this.state.keywords.map((keyword, i) => {
-				return(
-					<li key={i}>
-					{keyword}
-					</li>
-				)
-			})
 		return(
 			<div className="blog">
 				<p>{this.state.text}</p>
-				<ul>{keywords}</ul>
+				<p>{this.state.keywords}</p>
 				{this.state.idOfPostBeingEdited !== null ? <EditPost idOfPostBeingEdited={this.state.idOfPostBeingEdited} closeEdit={this.closeEdit}/> : null}
 				<button onClick={this.deletePost}>Delete</button>
 				<button onClick={this.editPost}>Edit</button>
+
 			</div>
 			)
 

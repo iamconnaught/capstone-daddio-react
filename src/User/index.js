@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RandomName from '../RandomName';
+
 import Baby from '../Baby';
 import Name from '../Name';
 import Post from '../Post';
@@ -52,7 +52,7 @@ class User extends Component {
 				</div>
 				{this.state.displayPost ? <Post /> : null}
 				{this.state.displayTask ? <Task /> : null}
-				{this.state.displayNames ? <RandomName /> : null}
+				
 				{this.state.displayNames ? <Name /> : null}
 			</div>
 

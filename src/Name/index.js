@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RandomName from '../RandomName';
 
 class Name extends Component {
 	constructor(){
@@ -8,7 +9,10 @@ class Name extends Component {
 			nameId: null
 		}
 	}
-	async componentDidMount(){
+	componentDidMount(){
+		this.getNameList();
+	}
+	getNameList = async () => {
 		const data = await fetch(`${process.env.REACT_APP_BACKEND_URL}/name`, {
 			method: 'GET',
 			credentials: 'include'
@@ -28,7 +32,7 @@ class Name extends Component {
 			})
 			console.log('deletedName');
 			console.log(deletedName);
-			this.componentDidMount()		
+			this.getNameList();		
 		} catch (err){
 			console.error(err)
 		}
@@ -47,6 +51,7 @@ class Name extends Component {
 			<div className="name">
 				<h2>Names to Consider</h2>
 				<ul> {nameList} </ul>
+				<RandomName getNameList={this.getNameList}/>
 			</div>
 			)
 	}
