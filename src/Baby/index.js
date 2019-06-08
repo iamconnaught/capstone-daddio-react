@@ -20,32 +20,32 @@ class Baby extends Component {
 			method: 'GET',
 			credentials: 'include',
 		});
-		// console.log('data');
-		// console.log(data);
+		// const data = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile`, {
+		// 	method: 'GET',
+		// 	credentials: 'include'
+		// })
+		console.log('data');
+		console.log(data);
 		const fetchedData = await data.json();
+		console.log('fetchedData');
 		console.log(fetchedData);
-		// console.log('fetchedData.name');
-		// console.log(fetchedData.name);
+		// console.log('fetchedData.baby');
+		// console.log(fetchedData.baby);
+
+		// const babyData = await fetch(`${process.env.REACT_APP_BACKEND_URL}/baby/${fetchedData.baby}`, {
+		// 	method: 'GET',
+		// 	credentials: 'include'
+		// })
+		// console.log('babyData');
+		// console.log(babyData);
+		// const fetchedBabyData = await babyData.json();
+		// console.log('fetchedBabyData');
+		// console.log(fetchedBabyData);
 		this.setState({
 			idOfBabyBeingShown: null,
-			list: fetchedData
+			list: fetchedData.data
 		});
 	}
-	// deleteBaby = async (e) => {
-	// 	e.preventDefault();
-	// 	// console.log(e.currentTarget.parentNode.dataset);
-	// 	try {
-	// 		await fetch(process.env.REACT_APP_BACKEND_URL + '/baby/' + e.currentTarget.parentNode.dataset.babyId, {
-	// 			method: "DELETE",
-	// 			credentials: 'include'
-	// 		})
-	// 		// console.log('deletedBaby');
-	// 		// console.log(deletedBaby);
-	// 		this.componentDidMount()		
-	// 	} catch (err){
-	// 		console.error(err)
-	// 	}
-	// }
 	showBaby = (e) => {
 		console.log('e.currentTarget');
 		console.log(e.currentTarget);
