@@ -87,12 +87,13 @@ header {
 
 .headerLink  {
   display: flex;
-  margin: 20px;
+  flex-direction: column;
+  margin: 10px;
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   text-align: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 
@@ -103,6 +104,21 @@ header a {
 
 header a:hover {
   color: #EAEAEA;
+}
+
+.daddioTitle {
+  color: #FFFFFF;
+  display: flex;
+  margin: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.daddioTitle h1{
+  color: #FFFFFF;
 }
 
 

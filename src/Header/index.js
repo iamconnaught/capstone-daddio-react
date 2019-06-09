@@ -12,9 +12,14 @@ class Header extends Component {
 	render(){
 		return(
 			<header>
-				<Link className='headerLink' to='/user'>Profile</Link>
-				<Link className='headerLink' to='/baby/new'>Add Baby</Link>
-				<Link onClick={this.logOut} className="headerLink" to='/'>Log Out</Link>
+				<div className="daddioTitle">
+					<h1>DADDIO</h1>
+				</div>
+				<div className="headerLink">
+					<Link className='headerLink' to='/user'>Profile</Link>
+					<Link className='headerLink' to='/baby/new'>Add Baby</Link>
+					<Link onClick={this.logOut} className="headerLink" to='/'>Log Out</Link>
+				</div>
 			</header>
 		)
 	}
