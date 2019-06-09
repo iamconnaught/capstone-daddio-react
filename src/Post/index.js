@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ShowPost from '../ShowPost';
 import { Link }from 'react-router-dom';
 import CreatePost from '../CreatePost';
+import SearchPosts from '../SearchPosts';
 
 class Post extends Component {
 	constructor(){
@@ -9,7 +10,9 @@ class Post extends Component {
 		this.state ={
 			list: [],
 			idOfPostBeingShown: null,
-			createPostShowing:false
+			createPostShowing:false,
+			searchPostsShowing: false,
+			postListShowing:true
 			// idOfPostBeingEdited: null
 		}
 	}
@@ -24,6 +27,7 @@ class Post extends Component {
 		const fetchedData = await data.json();
 		this.setState({
 			idOfPostBeingShown: null,
+			postListShowing:true,
 			list: fetchedData
 		})
 	}
@@ -61,12 +65,14 @@ class Post extends Component {
 		const id = e.currentTarget.parentNode.dataset.postId;
 		this.setState({
 			idOfPostBeingShown: id,
-			createPostShowing: null
+			createPostShowing: null,
+			postListShowing: false
 		})
 	}
 	showCreatePost = (e) => {
 		this.setState({
-			createPostShowing: true
+			createPostShowing: true,
+			postListShowing: false
 		})
 	}
 	closeCreatePost = () => {
@@ -75,7 +81,18 @@ class Post extends Component {
 			createPostShowing:false
 		})
 	}
-
+	showSearchPosts = (e) => {
+		this.setState({
+			searchPostsShowing: true,
+			postListShowing: false
+		})
+	}
+	closeSearchPosts = () => {
+		this.getPostList();
+		this.setState({
+			searchPostsShowing:false
+		})
+	}
 	render(){
 		const postList = this.state.list.map((post) => {
 			return(
@@ -93,7 +110,13 @@ class Post extends Component {
 				<h2 className="blog">Blog</h2>
 				{this.state.createPostShowing === false ? <button onClick={this.showCreatePost}>Add Post</button> : null }
 				{this.state.createPostShowing ? <CreatePost getPostList={this.getPostList} closeCreatePost={this.closeCreatePost}/> : null}
-				{this.state.idOfPostBeingShown !== null ? <ShowPost idOfPostBeingShown={this.state.idOfPostBeingShown} getPostList={this.getPostList}/> : <ul>{postList}</ul>}
+
+				{this.state.searchPostsShowing === false ? <button onClick={this.showSearchPosts}>Search Post</button> : null }
+				{this.state.searchPostsShowing ? <SearchPosts getPostList={this.getPostList} closeSearchPosts={this.closeSearchPosts}/> : null}
+
+				{this.state.idOfPostBeingShown !== null ? <ShowPost idOfPostBeingShown={this.state.idOfPostBeingShown} getPostList={this.getPostList}/> : null}
+
+				{this.state.postListShowing ? <ul>{postList}</ul> : null}
 			</div>	
 		)
 	}

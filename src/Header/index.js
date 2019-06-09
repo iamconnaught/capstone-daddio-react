@@ -14,8 +14,6 @@ class Header extends Component {
 			<header>
 				<Link className='headerLink' to='/user'>Profile</Link>
 				<Link className='headerLink' to='/baby/new'>Add Baby</Link>
-				<Link className='headerLink' to='/post/new'>Add Post</Link>
-				<Link className='headerLink' to='/task/new'>Add Task</Link>
 				<Link onClick={this.logOut} className="headerLink" to='/'>Log Out</Link>
 			</header>
 		)
