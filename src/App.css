@@ -87,7 +87,6 @@ header {
 
 .headerLink  {
   display: flex;
-  flex-direction: column;
   margin: 10px;
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
@@ -217,7 +216,21 @@ header a:hover {
   font-weight: bold;
 }
 
+.taskList {
+  margin-left: -35px;
+}
 
+.taskLi {
+  margin-bottom: 20px;
+}
+
+.postList {
+  margin-left: -35px;
+}
+
+.postLi {
+  margin-bottom: 20px;
+}
 
 
 

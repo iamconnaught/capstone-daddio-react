@@ -72,7 +72,8 @@ class Post extends Component {
 	showCreatePost = (e) => {
 		this.setState({
 			createPostShowing: true,
-			postListShowing: false
+			postListShowing: false,
+			searchPostsShowing:false
 		})
 	}
 	closeCreatePost = () => {
@@ -84,6 +85,7 @@ class Post extends Component {
 	showSearchPosts = (e) => {
 		this.setState({
 			searchPostsShowing: true,
+			createPostShowing:false,
 			postListShowing: false
 		})
 	}
@@ -97,7 +99,7 @@ class Post extends Component {
 		const postList = this.state.list.map((post) => {
 			return(
 				<div className="blog">
-					<li data-post-id={post._id} key={post._id}>
+					<li className="postLi" data-post-id={post._id} key={post._id}>
 						<span>{post.title}</span><br/>
 						
 						{this.state.idOfPostBeingShown === null ? <button onClick={this.showPost}>Show</button> : null}
@@ -116,7 +118,7 @@ class Post extends Component {
 
 				{this.state.idOfPostBeingShown !== null ? <ShowPost idOfPostBeingShown={this.state.idOfPostBeingShown} getPostList={this.getPostList}/> : null}
 
-				{this.state.postListShowing ? <ul>{postList}</ul> : null}
+				{this.state.postListShowing ? <ul className="postList">{postList}</ul> : null}
 			</div>	
 		)
 	}

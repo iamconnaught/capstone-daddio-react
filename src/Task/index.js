@@ -51,7 +51,7 @@ class Task extends Component {
 		console.log(this.state.idOfTaskBeingShown);
 		const taskList = this.state.list.map((task) => {
 				return(
-					<li data-task-id={task._id} key={task._id}>
+					<li className="taskLi" data-task-id={task._id} key={task._id}>
 						<span>{task.title}</span><br/>
 						
 						{this.state.idOfTaskBeingShown === null ? <button onClick={this.showTask}>Show</button> : null}
@@ -64,7 +64,7 @@ class Task extends Component {
 					<h2>To-Do List</h2>
 					{this.state.createTaskShowing === false ? <button onClick={this.showCreateTask}>Add Task</button> : null }
 					{this.state.createTaskShowing ? <CreateTask getTaskList={this.getTaskList} closeCreateTask={this.closeCreateTask}/> : null}
-					{this.state.idOfTaskBeingShown === null ? <ul>{taskList}</ul> : null}
+					{this.state.idOfTaskBeingShown === null ? <ul className="taskList">{taskList}</ul> : null}
 					{this.state.idOfTaskBeingShown !== null ? <ShowTask idOfTaskBeingShown={this.state.idOfTaskBeingShown} getTaskList={this.getTaskList}/> : null}
 				</div>	
 			)

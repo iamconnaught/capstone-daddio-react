@@ -69,7 +69,7 @@ class ShowBaby extends Component {
 	}
 	render(){
 		return(
-			<div>
+			<div className="baby">
 				<h1>{this.state.name}</h1>
 				<p>Gender: {this.state.gender}</p>
 				<p>Due Date: {this.state.dateOfBirth}</p>
