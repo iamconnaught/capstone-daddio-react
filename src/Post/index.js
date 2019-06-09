@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import ShowPost from '../ShowPost';
+import { Link }from 'react-router-dom';
+import CreatePost from '../CreatePost';
 
 class Post extends Component {
 	constructor(){
 		super();
 		this.state ={
 			list: [],
-			idOfPostBeingShown: null
+			idOfPostBeingShown: null,
+			createPostShowing:false
 			// idOfPostBeingEdited: null
 		}
 	}
@@ -57,7 +60,19 @@ class Post extends Component {
 	showPost = (e) => {
 		const id = e.currentTarget.parentNode.dataset.postId;
 		this.setState({
-			idOfPostBeingShown: id
+			idOfPostBeingShown: id,
+			createPostShowing: null
+		})
+	}
+	showCreatePost = (e) => {
+		this.setState({
+			createPostShowing: true
+		})
+	}
+	closeCreatePost = () => {
+		this.getPostList();
+		this.setState({
+			createPostShowing:false
 		})
 	}
 
@@ -76,8 +91,9 @@ class Post extends Component {
 		return(
 			<div>
 				<h2 className="blog">Blog</h2>
-				{this.state.idOfPostBeingShown === null ? <ul>{postList}</ul> : null }
-				{this.state.idOfPostBeingShown !== null ? <ShowPost idOfPostBeingShown={this.state.idOfPostBeingShown} getPostList={this.getPostList}/> : null}
+				{this.state.createPostShowing === false ? <button onClick={this.showCreatePost}>Add Post</button> : null }
+				{this.state.createPostShowing ? <CreatePost getPostList={this.getPostList} closeCreatePost={this.closeCreatePost}/> : null}
+				{this.state.idOfPostBeingShown !== null ? <ShowPost idOfPostBeingShown={this.state.idOfPostBeingShown} getPostList={this.getPostList}/> : <ul>{postList}</ul>}
 			</div>	
 		)
 	}

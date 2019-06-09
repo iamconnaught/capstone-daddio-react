@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import ShowTask from '../ShowTask';
+import CreateTask from '../CreateTask';
 
 class Task extends Component {
 	constructor(){
 		super();
 		this.state = {
 			list: [],
-			idOfTaskBeingShown: null
+			idOfTaskBeingShown: null,
+			createTaskShowing: false
 		}
 	}
 	async componentDidMount(){
@@ -20,30 +22,28 @@ class Task extends Component {
 		const fetchedData = await data.json();
 		this.setState({
 			idOfTaskBeingShown: null,
+			createTaskShowing: false,
 			list: fetchedData
 		})
 	}
-	// deleteTask = async (e) => {
-	// 	e.preventDefault();
-	// 	try {
-	// 		// console.log('delete this id');
-	// 		// console.log(e.currentTarget.parentNode.dataset);
-	// 		const deletedTask = await fetch(`${process.env.REACT_APP_BACKEND_URL}/task/${e.currentTarget.parentNode.dataset.taskId}`, {
-	// 			method: "DELETE",
-	// 			credentials: 'include'
-	// 		})
-	// 		this.componentDidMount()
-	// 	} catch (err){
-	// 		console.error(err);
-	// 	}
-	// }
 	showTask = (e) => {
 		// console.log(e.currentTarget.parentNode.dataset);
 		const id = e.currentTarget.parentNode.dataset.taskId
 		// console.log('id');
 		// console.log(id);
 		this.setState({
-			idOfTaskBeingShown: id
+			idOfTaskBeingShown: id,
+			createTaskShowing: false
+		})
+	}
+	showCreateTask = (e) => {
+		this.setState({
+			createTaskShowing: true
+		})
+	}
+	closeCreateTask = () => {
+		this.setState({
+			createTaskShowing:false
 		})
 	}
 	render(){
@@ -62,6 +62,8 @@ class Task extends Component {
 			return(
 				<div className="todo">
 					<h2>To-Do List</h2>
+					{this.state.createTaskShowing === false ? <button onClick={this.showCreateTask}>Add Task</button> : null }
+					{this.state.createTaskShowing ? <CreateTask getTaskList={this.getTaskList} closeCreateTask={this.closeCreateTask}/> : null}
 					{this.state.idOfTaskBeingShown === null ? <ul>{taskList}</ul> : null}
 					{this.state.idOfTaskBeingShown !== null ? <ShowTask idOfTaskBeingShown={this.state.idOfTaskBeingShown} getTaskList={this.getTaskList}/> : null}
 				</div>	

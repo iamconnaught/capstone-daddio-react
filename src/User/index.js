@@ -46,9 +46,9 @@ class User extends Component {
 				<Header />
 				<Baby />
 				<div className="buttonContainer">
-					<button onClick={this.showPost}>Blog</button>
-					<button onClick={this.showTask}>To-Do List</button>
-					<button onClick={this.showNames}>Names</button>
+					{this.state.displayPost ? null : <button onClick={this.showPost}>Blog</button>}
+					{this.state.displayTask ? null : <button onClick={this.showTask}>To-Do List</button>}
+					{this.state.displayNames ? null : <button onClick={this.showNames}>Names</button>}
 				</div>
 				{this.state.displayPost ? <Post /> : null}
 				{this.state.displayTask ? <Task /> : null}

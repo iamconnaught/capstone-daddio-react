@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Header from '../Header';
 
 class CreatePost extends Component {
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state ={
 			title: '',
 			text: '',
@@ -30,9 +30,8 @@ class CreatePost extends Component {
 			const parsedResponse = await postResponse.json();
 			console.log('parsedResponse');
 			console.log(parsedResponse);
-			if (parsedResponse.status === 200) {
-				this.props.history.push('/user')
-			}
+			this.props.getPostList();
+			this.props.closeCreatePost();
 		} catch (err){
 			console.error(err)
 		}
@@ -40,7 +39,6 @@ class CreatePost extends Component {
 	render(){
 		return(
 			<div>
-				<Header />
 				<form onSubmit={this.handleSubmit}>
 					<input type="text" name="title" placeholder="Title" onChange={this.handleChange}/>
 					<textarea type="text" name="text" placeholder="Text" onChange={this.handleChange}/>

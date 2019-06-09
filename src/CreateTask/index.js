@@ -32,6 +32,7 @@ class CreateTask extends Component {
 			console.log('create task parsedResponse');
 			console.log(parsedResponse);
 			this.searchPosts();
+			this.props.closeCreateTask();
 
 		} catch (err){
 			console.error(err)
@@ -121,7 +122,6 @@ class CreateTask extends Component {
 	render(){
 		return(
 			<div>
-				<Header />
 				<form onSubmit={this.handleSubmit}>
 					<input type="text" name="title" placeholder="Title" onChange={this.handleChange}/>
 					<input type="text" name="details" placeholder="Details" onChange={this.handleChange}/>

@@ -3,6 +3,12 @@ import { Link }from 'react-router-dom';
 
 
 class Header extends Component {
+	logOut = async () => {
+		await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/logout`, {
+			method: 'GET',
+			credentials: 'include'
+		})
+	}
 	render(){
 		return(
 			<header>
@@ -10,6 +16,7 @@ class Header extends Component {
 				<Link className='headerLink' to='/baby/new'>Add Baby</Link>
 				<Link className='headerLink' to='/post/new'>Add Post</Link>
 				<Link className='headerLink' to='/task/new'>Add Task</Link>
+				<Link onClick={this.logOut} className="headerLink" to='/'>Log Out</Link>
 			</header>
 		)
 	}
