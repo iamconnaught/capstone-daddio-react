@@ -38,16 +38,19 @@ class CreateBaby extends Component {
 		return(
 			<div>
 				<Header />
-				<form onSubmit={this.handleSubmit}>
-					<input type="text" name="name" placeholder="name" onChange={this.handleChange}/>
-					<input type="date" name="date" placeholder="YYYY-MM-DD" onChange={this.handleChange}/>
-					<select>
-						<option value="Unknown">Unknown</option>
-						<option value="Boy">Boy</option>
-						<option value="Girl">Girl</option>
-					</select>
-					<button type="submit"> Add Baby </button>
-				</form>
+				<div className="createBaby">
+					<form className="createForm" onSubmit={this.handleSubmit}>
+						<input type="text" name="name" placeholder="name" onChange={this.handleChange}/>
+						<input type="date" name="date" placeholder="YYYY-MM-DD" onChange={this.handleChange}/>
+						<select>
+							<option value="Unknown">Unknown</option>
+							<option value="Boy">Boy</option>
+							<option value="Girl">Girl</option>
+						</select>
+						<button type="submit"> Add Baby </button>
+					</form>
+					<p className="babyPara">Fill out any information that you have. Feel free to comeback and edit the <strong>Name</strong> and <strong>Gender</strong> as it becomes known to you.</p>
+				</div>
 			</div>
 
 			)

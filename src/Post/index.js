@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ShowPost from '../ShowPost';
-import { Link }from 'react-router-dom';
 import CreatePost from '../CreatePost';
 import SearchPosts from '../SearchPosts';
 
@@ -98,8 +97,8 @@ class Post extends Component {
 	render(){
 		const postList = this.state.list.map((post) => {
 			return(
-				<div className="blog">
-					<li className="postLi" data-post-id={post._id} key={post._id}>
+				<div key={post._id} className="blog">
+					<li className="postLi" data-post-id={post._id}>
 						<span>{post.title}</span><br/>
 						
 						{this.state.idOfPostBeingShown === null ? <button onClick={this.showPost}>Show</button> : null}
@@ -110,10 +109,10 @@ class Post extends Component {
 		return(
 			<div>
 				<h2 className="blog">Blog</h2>
-				{this.state.createPostShowing === false ? <button onClick={this.showCreatePost}>Add Post</button> : null }
+				{this.state.createPostShowing === false ? <button className="option" onClick={this.showCreatePost}>Add Post</button> : null }
 				{this.state.createPostShowing ? <CreatePost getPostList={this.getPostList} closeCreatePost={this.closeCreatePost}/> : null}
 
-				{this.state.searchPostsShowing === false ? <button onClick={this.showSearchPosts}>Search Post</button> : null }
+				{this.state.searchPostsShowing === false ? <button className="option" onClick={this.showSearchPosts}>Search Post</button> : null }
 				{this.state.searchPostsShowing ? <SearchPosts getPostList={this.getPostList} closeSearchPosts={this.closeSearchPosts}/> : null}
 
 				{this.state.idOfPostBeingShown !== null ? <ShowPost idOfPostBeingShown={this.state.idOfPostBeingShown} getPostList={this.getPostList}/> : null}

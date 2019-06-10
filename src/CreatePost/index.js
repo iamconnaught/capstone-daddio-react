@@ -39,10 +39,10 @@ class CreatePost extends Component {
 	render(){
 		return(
 			<div>
-				<form onSubmit={this.handleSubmit}>
+				<form className="postForm" onSubmit={this.handleSubmit}>
 					<input type="text" name="title" placeholder="Title" onChange={this.handleChange}/>
-					<textarea type="text" name="text" placeholder="Text" onChange={this.handleChange}/>
 					<input type="text" name="keywords" placeholder="Keywords" onChange={this.handleChange}/>
+					<textarea type="text" name="text" placeholder="Text" onChange={this.handleChange}/>
 					<button type="submit">Add Post</button>
 				</form>
 			</div>

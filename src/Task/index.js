@@ -62,7 +62,7 @@ class Task extends Component {
 			return(
 				<div className="todo">
 					<h2>To-Do List</h2>
-					{this.state.createTaskShowing === false ? <button onClick={this.showCreateTask}>Add Task</button> : null }
+					{this.state.createTaskShowing === false ? <button className="option" onClick={this.showCreateTask}>Add Task</button> : null }
 					{this.state.createTaskShowing ? <CreateTask getTaskList={this.getTaskList} closeCreateTask={this.closeCreateTask}/> : null}
 					{this.state.idOfTaskBeingShown === null ? <ul className="taskList">{taskList}</ul> : null}
 					{this.state.idOfTaskBeingShown !== null ? <ShowTask idOfTaskBeingShown={this.state.idOfTaskBeingShown} getTaskList={this.getTaskList}/> : null}

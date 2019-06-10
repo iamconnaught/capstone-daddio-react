@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
 
 class Login extends Component {
 	constructor(){
@@ -29,10 +29,8 @@ class Login extends Component {
 			const parsedResponse = await loginResponse.json();
 			console.log('parsedResponse');
 			console.log(parsedResponse);
-			if (parsedResponse.status === 200) {
-				this.props.history.push('/user');
-			}	console.log('status:', parsedResponse.status);
-			
+			this.props.appLogin();
+			this.props.history.push('/user')
 		} catch (err){
 			console.log(err);
 		}
@@ -40,11 +38,10 @@ class Login extends Component {
 	render(){
 		return(
 			<div>
-				<form onSubmit={this.handleSubmit}>
+				<form className="auth" onSubmit={this.handleSubmit}>
 					<input type="text" name="username" placeholder="username" onChange={this.handleChange}/>
 					<input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
 					<button type="submit">Login</button><br/>
-					<span>Need to <Link to='/auth/register'>Register?</Link></span>
 				</form>
 			</div>
 			)

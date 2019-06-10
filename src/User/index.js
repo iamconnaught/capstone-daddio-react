@@ -41,6 +41,10 @@ class User extends Component {
 		})
 	}
 	render(){
+
+		console.log("user props:")
+		console.log(this.props)
+
 		return(
 			<div>
 				<Header />

@@ -27,7 +27,8 @@ class Register extends Component {
 
         	const parsedResponse = await registerResponse.json();
         	if(parsedResponse.status === 200){
-	    		this.props.history.push('../user');
+        		this.props.appLogin();
+	    		this.props.history.push('/user');
 	    		console.log('Status: ', parsedResponse.status);
 	    	}
 	    }   
@@ -39,11 +40,10 @@ class Register extends Component {
 	render(){
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
+				<form className="auth" onSubmit={this.handleSubmit}>
 					<input type="text" name="username" placeholder="username" onChange={this.handleChange}/>
 					<input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
 					<button type="submit">Register</button><br/>
-					<span>Already have an account? <Link to='/auth/login'>Login Here</Link></span>
 				</form>
 			</div>
 			)

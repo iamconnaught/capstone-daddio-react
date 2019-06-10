@@ -122,9 +122,9 @@ class CreateTask extends Component {
 	render(){
 		return(
 			<div>
-				<form onSubmit={this.handleSubmit}>
+				<form className="taskForm" onSubmit={this.handleSubmit}>
 					<input type="text" name="title" placeholder="Title" onChange={this.handleChange}/>
-					<input type="text" name="details" placeholder="Details" onChange={this.handleChange}/>
+					<textarea type="text" name="details" placeholder="Details" onChange={this.handleChange}/>
 					<button type="submit">Add Task</button>
 				</form>
 				{this.state.matchedPosts !== null ? <MatchedResults matchedPosts={this.state.matchedPosts}/> : null}
