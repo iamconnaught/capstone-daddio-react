@@ -33,10 +33,10 @@ class Countdown extends Component {
 	render() {
 		const { days, hours, minutes, seconds } = this.state;
 
-        const daysRadius = mapNumber(days, 280, 0, 0, 360);
-        const hoursRadius = mapNumber(hours, 24, 0, 0, 360);
-        const minutesRadius = mapNumber(minutes, 60, 0, 0, 360);
-        const secondsRadius = mapNumber(seconds, 60, 0, 0, 360);
+        const daysRadius = mapNumber(days, 280, 0, 360, 0);
+        const hoursRadius = mapNumber(hours, 24, 0, 360, 0);
+        const minutesRadius = mapNumber(minutes, 60, 0, 360, 0);
+        const secondsRadius = mapNumber(seconds, 60, 0, 360, 0);
         
         if (!seconds) {
             return null;
