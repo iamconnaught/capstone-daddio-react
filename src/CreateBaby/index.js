@@ -6,10 +6,16 @@ class CreateBaby extends Component {
 		super();
 		this.state = {
 			name: null,
-			gender: "unknown",
+			gender: null,
 			dateOfBirth: null
 
 		}
+	}
+	handleDateChange = (e) => {
+		console.log(e.target.value);
+		this.setState({
+			dateOfBirth: e.target.value
+		});
 	}
 	handleChange = (e) => {
 		this.setState({[e.target.name]: e.target.value});
@@ -18,7 +24,7 @@ class CreateBaby extends Component {
 	handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const babyResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/baby/new`, {
+			await fetch(`${process.env.REACT_APP_BACKEND_URL}/baby/new`, {
 				method: 'POST',
 		      	credentials: 'include', 
 		      	body: JSON.stringify(this.state),
@@ -26,10 +32,10 @@ class CreateBaby extends Component {
 		        	'Content-Type': 'application/json'
 		    		}
 			})
-			const parsedResponse = await babyResponse.json();
-        	if(parsedResponse.status === 200){
-	    		this.props.history.push('/user');
-	    	}
+			
+        	
+	    	this.props.history.push('/user');
+	    	
 		} catch (err){
 			console.error(err)
 		}
@@ -40,9 +46,19 @@ class CreateBaby extends Component {
 				<Header />
 				<div className="createBaby">
 					<form className="createForm" onSubmit={this.handleSubmit}>
-						<input type="text" name="name" placeholder="name" onChange={this.handleChange}/>
-						<input type="date" name="date" placeholder="YYYY-MM-DD" onChange={this.handleChange}/>
-						<select>
+						<input 
+							type="text" 
+							name="name" 
+							placeholder="name" 
+							onChange={this.handleChange}
+						/>
+						<input 
+							type="date" 
+							name="date" 
+							placeholder="YYYY-MM-DD" 
+							onChange={this.handleChange}
+						/>
+						<select name="gender" onChange={this.handleChange}>
 							<option value="Unknown">Unknown</option>
 							<option value="Boy">Boy</option>
 							<option value="Girl">Girl</option>

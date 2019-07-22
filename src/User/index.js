@@ -49,7 +49,7 @@ class User extends Component {
 			<div>
 				<Header />
 				<div className="userPage">
-					<Baby />
+					<Baby history={this.props.history}/>
 					<div className="userActivities">
 						<div className="buttonContainer">
 							{this.state.displayPost ? null : <button onClick={this.showPost}>Blog</button>}

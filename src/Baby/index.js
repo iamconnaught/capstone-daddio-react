@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Countdown from '../Countdown';
-// import EditBaby from '../EditBaby';
 import ShowBaby from '../ShowBaby';
 
 class Baby extends Component {
@@ -8,7 +7,6 @@ class Baby extends Component {
 		super();
 		this.state = {
 			list: [],
-			// idOfBabyBeingEdited: null,
 			idOfBabyBeingShown: null
 		}
 	}
@@ -20,27 +18,17 @@ class Baby extends Component {
 			method: 'GET',
 			credentials: 'include',
 		});
-		// const data = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile`, {
-		// 	method: 'GET',
-		// 	credentials: 'include'
-		// })
+
 		console.log('data');
 		console.log(data);
 		const fetchedData = await data.json();
 		console.log('fetchedData');
 		console.log(fetchedData);
-		// console.log('fetchedData.baby');
-		// console.log(fetchedData.baby);
+		
 
-		// const babyData = await fetch(`${process.env.REACT_APP_BACKEND_URL}/baby/${fetchedData.baby}`, {
-		// 	method: 'GET',
-		// 	credentials: 'include'
-		// })
-		// console.log('babyData');
-		// console.log(babyData);
-		// const fetchedBabyData = await babyData.json();
-		// console.log('fetchedBabyData');
-		// console.log(fetchedBabyData);
+		if(fetchedData.status !== 200){
+			this.props.history.push('/error')
+		}
 		this.setState({
 			idOfBabyBeingShown: null,
 			list: fetchedData.data
@@ -71,22 +59,13 @@ class Baby extends Component {
 			idOfBabyBeingEdited: null
 		})
 	}
-	// editBaby = async (e) => {
-	// 	// console.log(e.currentTarget.parentNode.dataset);
-	// 	const id = e.currentTarget.parentNode.dataset.babyId
-	// 	// console.log(id);
-		
-	// 	this.setState({
-	// 		idOfBabyBeingEdited: id
-	// 	})
-	// }
 	
 	render(){
 		console.log('this.state in baby render');
 		console.log(this.state);
 
 
-		// console.log(this.state.list);
+		
 		const babyList = this.state.list.map((baby, i) => {
 			return(
 				<li data-baby-id={baby._id} key={baby._id}>
@@ -96,6 +75,7 @@ class Baby extends Component {
 				</li>
 			)
 		})
+		
 		return(
 			<div className="baby">
 				

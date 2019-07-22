@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../Header';
 import MatchedResults from '../MatchedResults'
 
 class CreateTask extends Component {
@@ -86,17 +85,14 @@ class CreateTask extends Component {
 
 						} else {
 							console.log('no matches');
+
 						}
 						
 					}
 					
 				}
 			}
-			// console.log(postKeywordsArray);
-			// const postKeywords = postSearchJson[0].keywords;
-			// console.log('postKeywords');
-			// console.log(postKeywords);
-			// const postKeywordsSplit = postKeywords.split(" ");
+		
 			console.log('matches after matching');
 			console.log(matches);
 			console.log('generating the rest of the post using original index');

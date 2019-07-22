@@ -59,16 +59,20 @@ class ShowPost extends Component {
 			console.error(err);
 		}
 	}
+	closeShow = () => {
+		this.props.getPostList();
+	}
 	render(){
 		console.log('this.state.text in showpost render');
 		console.log(this.state.text);
 		return(
 			<div className="blog">
 				<p>{this.state.text}</p>
-				<p>{this.state.keywords}</p>
+				<p>Keywords: 	<strong>{this.state.keywords}</strong></p>
 				{this.state.idOfPostBeingEdited !== null ? <EditPost idOfPostBeingEdited={this.state.idOfPostBeingEdited} closeEdit={this.closeEdit}/> : null}
 				<button onClick={this.deletePost}>Delete</button>
 				<button onClick={this.editPost}>Edit</button>
+				<button onClick={this.closeShow}>Back</button>
 
 			</div>
 			)

@@ -85,7 +85,7 @@ class SearchPosts extends Component {
 	}
 	render(){
 		return(
-			<div>
+			<div className="searchPosts">
 				<form onSubmit={this.searchPosts}>
 					<input type="text" name="searchTerm" placeholder="Search Posts" onChange={this.handleChange}/>
 					<button type="submit">Search</button>

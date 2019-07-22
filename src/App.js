@@ -9,7 +9,7 @@ import CreateBaby from './CreateBaby';
 import EditBaby from './EditBaby';
 import CreatePost from './CreatePost';
 import CreateTask from './CreateTask';
-
+import ErrorPage from './ErrorPage';
 
 class App extends Component {
   constructor(props){
@@ -42,6 +42,7 @@ class App extends Component {
           <Route exact path="/baby/edit" component={ EditBaby }/>
           <Route exact path="/post/new" component={ CreatePost }/>
           <Route exact path="/task/new" component={ CreateTask }/>
+          <Route exact path="/error" component={ ErrorPage }/>
           <Route exact path="/" render={ (props) => <Home {...props} loggedIn={this.state.loggedIn} appLogin={this.appLogin} />} />
         </Switch>
       </main>

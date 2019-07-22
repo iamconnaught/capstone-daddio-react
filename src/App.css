@@ -166,7 +166,13 @@ header a:hover {
   margin-bottom: 50px;
 }
 
-.randomName button, .name button, .blog button, .taskLi button{
+.blog, .todo {
+  margin-right: 10%;
+  margin-left: 10%; 
+
+}
+
+.randomName button, .name button, .blog button, .taskLi button, .todo button{
   color: #FFFFFF;
   border-radius: 4px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -359,6 +365,30 @@ header a:hover {
   justify-content: center;
   align-items: center;
  }
+
+.searchPosts {
+  margin: 20px;
+}
+
+.error {
+  background-image: url('./Public/HorseDad.jpg');
+  height: 600px;
+  background-position: 50% 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error h1 {
+  color: #FFFFFF;
+}
+
+
+
+
+
 
 
 

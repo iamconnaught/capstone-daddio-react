@@ -65,14 +65,16 @@ class Post extends Component {
 		this.setState({
 			idOfPostBeingShown: id,
 			createPostShowing: null,
-			postListShowing: false
+			postListShowing: false,
+			searchPostsShowing: false
 		})
 	}
 	showCreatePost = (e) => {
 		this.setState({
 			createPostShowing: true,
 			postListShowing: false,
-			searchPostsShowing:false
+			searchPostsShowing:false,
+			idOfPostBeingShown:null
 		})
 	}
 	closeCreatePost = () => {
@@ -85,7 +87,8 @@ class Post extends Component {
 		this.setState({
 			searchPostsShowing: true,
 			createPostShowing:false,
-			postListShowing: false
+			postListShowing: false,
+			idOfPostBeingShown: null
 		})
 	}
 	closeSearchPosts = () => {

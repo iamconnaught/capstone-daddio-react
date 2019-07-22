@@ -77,6 +77,9 @@ class ShowTask extends Component {
 			isCompleted: true
 		})
 	}
+	closeShow = () => {
+		this.props.getTaskList();
+	}
 	render(){
 		return(
 			<div className="todo">
@@ -87,6 +90,7 @@ class ShowTask extends Component {
 				<button onClick={this.deleteTask}>Delete</button>
 				<button onClick={this.editTask}>Edit</button>
 				<button onClick={this.toggleComplete}>Done</button>
+				<button onClick={this.closeShow}>Back</button>
 			</div>
 			)
 

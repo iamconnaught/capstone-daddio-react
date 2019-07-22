@@ -74,6 +74,7 @@ class RandomName extends Component {
 				<ul>
 					{nameList}
 				</ul>
+				<button onClick={this.getRandomName}> Refresh </button>
 			</div>
 
 			)

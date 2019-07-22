@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 
 class MatchedResults extends Component {
-	constructor(props){
-		super(props);
-	}
+	// constructor(props){
+	// 	super(props);
+	// }
 	render(){
 		console.log('this.props');
 		console.log(this.props);
 
 		const postList = this.props.matchedPosts.map((post) => {
 			return(
-				<div className="blog">
-					<li data-matchedPost-id={post._id} key={post._id}>
+				<div className="blog" key={post._id}>
+					<li data-matchedPost-id={post._id} >
 						<h3>{post.title}</h3>
 						<span>{post.text}</span>
 					</li>
@@ -20,7 +20,7 @@ class MatchedResults extends Component {
 		})
 		return(
 			<div>
-				<h2 className="blog">Posts related to your To-Do list task</h2>
+				<h2 className="blog">Related Posts</h2>
 				<ul>{postList}</ul>
 			</div>
 		)
