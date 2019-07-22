@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-
+// Log in existing User
 class Login extends Component {
 	constructor(){
 		super();
